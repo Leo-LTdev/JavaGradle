@@ -1,6 +1,6 @@
 package projet.Class.Character;
 
-public class factory_monstres {
+public class FactoryMonstre {
 
     public static Monster createMonster(String type) {
         switch (type.toLowerCase()) {
