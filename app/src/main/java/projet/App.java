@@ -3,16 +3,60 @@
  */
 package projet;
 
+import java.util.Scanner;
+
 import projet.Class.Character.*;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Scanner scanner = new Scanner(System.in);
+        Aventurer Player = null;
+        boolean inGame = true;
+
+        System.out.println("Choisis une race parmis celle-ci :");
+        System.out.println("1 : Humain");
+        System.out.println("2 : Elfes");
+
+        if (scanner.hasNextInt()) {
+            int nombre = scanner.nextInt();
+            if (nombre == 1) {
+                Player = new Aventurer();
+            }
+            if (nombre == 2) {
+                Player = new Aventurer();
+            }
+        }
+
+        while (inGame && Player != null) {
+            System.out.println("1 : Voir ses stats");
+            System.out.println("2 : Baston");
+            System.out.println("9 : Quitter la partie");
+            if (scanner.hasNextInt()) {
+                int nombre = scanner.nextInt();
+                if (nombre == 1) {
+                    System.out.println("Vie : " + Player.getLife());
+                    System.out.println("Armure : " + Player.getArmor());
+                    System.out.println("Vitesse : " + Player.getSpeed());
+                    System.out.println("Attaque : " + Player.getAttack());
+                    System.out.println("EXP : " + Player.getExp());
+                }
+                if (nombre == 2) {
+                    Tyranide Monster = new Tyranide();
+                    while (Player.getLife() > 0 && Monster.getLife() > 0) {
+                        System.out.println("1 : Attaquer");
+                        nombre = scanner.nextInt();
+                        if (nombre == 1) {
+                            Player.dealDamage(Monster);
+                            Monster.dealDamage(Player);
+                        }
+                    }
+                }
+                if (nombre == 9) {
+                    inGame = false;
+                    System.out.println("Fin du jeu.");
+                }
+            }
+        }
     }
-
-
 }

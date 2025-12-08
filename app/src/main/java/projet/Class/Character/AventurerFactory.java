@@ -4,9 +4,7 @@ public class AventurerFactory {
     
     public static Aventurer CreatAventurer(int choice){
         switch (choice) {
-            case 1:
-               return new Human.Builder();
-            
+            case 1:            
             case 2:
                 return new Elf();
             

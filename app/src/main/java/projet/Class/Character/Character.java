@@ -71,13 +71,16 @@ public abstract class Character {
 
     // Méthode
     public void dealDamage(Character target){
-        int totalDmg = this.attack - target.armor; 
-        target.setLife(target.life - totalDmg);
+        int damage = this.getAttack() - target.getArmor();
+        if (damage < 0) {
+            damage = 0;
+        }
+        target.setLife(target.getLife() - damage);
 
         if (target.isDead()){
             System.out.println("Vous avez tuer votre énemie");
         } else {
-            System.out.println("Vous avez infligé " + totalDmg + " degat");
+            System.out.println("Vous avez infligé " + damage + " degat");
             System.out.println("Il reste " + target.getLife() + " PV");
         }
     }
