@@ -53,6 +53,7 @@ public class App {
 
     public static void fight(Aventurer player, Scanner scanner) {
         Monster monster = randomMonster();
+        boolean escape = true;
         if (monster instanceof Orc) {
             System.err.println("Vous avez face à un Orc");
         } else if (monster instanceof Tyranide) {
@@ -60,7 +61,7 @@ public class App {
         } else if (monster instanceof Undead) {
             System.err.println("Vous avez face à un Undead");
         }
-        while (player.getLife() > 0 && monster.getLife() > 0) {
+        while (player.getLife() > 0 && monster.getLife() > 0 && escape) {
             System.out.println("1 : Attaquer");
             System.out.println("2 : Utiliser un objet");
             System.out.println("3 : Fuir");
@@ -70,7 +71,11 @@ public class App {
                 monster.dealDamage(player);
             }
             if (nombre == 3) {
-                player.escape();
+                if (player.escape()) {
+                    escape = false;
+                } else {
+                    monster.dealDamage(player);
+                }
             }
         }
     }

@@ -73,11 +73,13 @@ public class Aventurer extends Character {
         this.gear.setArmor(armor);
     }
 
-    public void escape() {
+    public boolean escape() {
         if (Math.random() < 0.3) {
             System.out.println("Vous avez réussi à fuir le combat !");
+            return true;
         } else {
             System.out.println("Échec de la fuite ! Vous allez affronter la réalité big noob !");
+            return false;
         }
     }
 }
