@@ -5,58 +5,73 @@ package projet;
 
 import java.util.Scanner;
 
+import java.util.Random;
+
 import projet.Class.Character.*;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Aventurer Player = null;
+        Aventurer player = null;
         boolean inGame = true;
 
         System.out.println("Choisis une race parmis celle-ci :");
         System.out.println("1 : Humain");
         System.out.println("2 : Elfes");
+        System.out.println("3 : Nains");
 
         if (scanner.hasNextInt()) {
             int nombre = scanner.nextInt();
-            if (nombre == 1) {
-                Player = new Aventurer();
-            }
-            if (nombre == 2) {
-                Player = new Aventurer();
-            }
+            player = AventurerFactory.CreatAventurer(nombre);
         }
 
-        while (inGame && Player != null) {
+        while (inGame && player != null) {
             System.out.println("1 : Voir ses stats");
             System.out.println("2 : Baston");
             System.out.println("9 : Quitter la partie");
             if (scanner.hasNextInt()) {
                 int nombre = scanner.nextInt();
                 if (nombre == 1) {
-                    System.out.println("Vie : " + Player.getLife());
-                    System.out.println("Armure : " + Player.getArmor());
-                    System.out.println("Vitesse : " + Player.getSpeed());
-                    System.out.println("Attaque : " + Player.getAttack());
-                    System.out.println("EXP : " + Player.getExp());
+                    player.showStats();
                 }
                 if (nombre == 2) {
-                    Tyranide Monster = FactoryMonstre.createTyranide();    
-                    while (Player.getLife() > 0 && Monster.getLife() > 0) {
-                        System.out.println("1 : Attaquer");
-                        nombre = scanner.nextInt();
-                        if (nombre == 1) {
-                            Player.dealDamage(Monster);
-                            Monster.dealDamage(Player);
-                        }
-                    }
+                    fight(player, scanner);
                 }
                 if (nombre == 9) {
                     inGame = false;
                     System.out.println("Fin du jeu.");
                 }
             }
+        }
+    }
+
+    public static void fight(Aventurer player, Scanner scanner) {
+        Monster monster = randomMonster();
+        while (player.getLife() > 0 && monster.getLife() > 0) {
+            System.out.println("1 : Attaquer");
+            System.out.println("2 : Utiliser un objet");
+            System.out.println("3 : Fuir");
+            int nombre = scanner.nextInt();
+            if (nombre == 1) {
+                player.dealDamage(monster);
+                monster.dealDamage(player);
+            }
+        }
+    }
+
+    public static Monster randomMonster() {
+        Random RANDOM = new Random();
+        int random = RANDOM.nextInt(3);
+        switch (random) {
+            case 1:
+                return FactoryMonstre.createTyranide();
+            case 2:
+                return FactoryMonstre.createUndead();
+            case 3:
+                return FactoryMonstre.createOrc();
+            default:
+                return FactoryMonstre.createOrc();
         }
     }
 }

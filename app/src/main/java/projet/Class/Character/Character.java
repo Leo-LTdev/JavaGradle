@@ -90,6 +90,13 @@ public abstract class Character {
         }
     }
 
+    public void showStats() {
+        System.out.println("Vie : " + getLife());
+        System.out.println("Armure : " + getArmor());
+        System.out.println("Vitesse : " + getSpeed());
+        System.out.println("Attaque : " + getAttack());
+    }
+
     protected boolean isDead(){
         if (this.life <= 0) {
             return true;

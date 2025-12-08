@@ -6,7 +6,7 @@ import projet.Class.Object.Weapon;
 import projet.Class.Object.Armor;
 
 
-public abstract class Aventurer extends Character {
+public class Aventurer extends Character {
     private ArrayList<Object> inventory;
     private Gear gear;
     private int level;
@@ -49,8 +49,14 @@ public abstract class Aventurer extends Character {
         inventory.add(object);
     }
 
-
-
+    @Override
+    public void showStats() {
+        System.out.println("Vie : " + getLife());
+        System.out.println("Armure : " + getArmor());
+        System.out.println("Vitesse : " + getSpeed());
+        System.out.println("Attaque : " + getAttack());
+        System.out.println("EXP : " + getExp());
+    }
 
     protected boolean isDead(){
         if (getLife() <= 0) {
