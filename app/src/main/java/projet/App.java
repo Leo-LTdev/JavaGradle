@@ -13,18 +13,8 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Aventurer player = null;
+        Aventurer player = initPlayer(scanner);
         boolean inGame = true;
-
-        System.out.println("Choisis une race parmis celle-ci :");
-        System.out.println("1 : Humain");
-        System.out.println("2 : Elfes");
-        System.out.println("3 : Nains");
-
-        if (scanner.hasNextInt()) {
-            int nombre = scanner.nextInt();
-            player = AventurerFactory.CreatAventurer(nombre);
-        }
 
         while (inGame && player != null) {
             System.out.println("1 : Voir ses stats");
@@ -44,6 +34,19 @@ public class App {
                 }
             }
         }
+    }
+    
+    public static Aventurer initPlayer(Scanner scanner) {
+        System.out.println("Choisis une race parmis celle-ci :");
+        System.out.println("1 : Humain");
+        System.out.println("2 : Elfes");
+        System.out.println("3 : Nains");
+
+        if (scanner.hasNextInt()) {
+            int nombre = scanner.nextInt();
+            return AventurerFactory.CreatAventurer(nombre);
+        }
+        return null;
     }
 
     public static void fight(Aventurer player, Scanner scanner) {
