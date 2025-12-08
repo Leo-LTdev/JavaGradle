@@ -4,9 +4,9 @@ public class Undead extends Monster {
 
     private double resurractionRate;
 
-    public Undead() {
-        super(100, 100, 20, 10, 15, 1);
-        this.resurractionRate = 0.5;
+    private Undead(int life, int speed, int armor, int attack, int xpValue, int level, double resurractionRate) {
+        super(life,speed,armor,attack,xpValue,level);
+        this.resurractionRate = resurractionRate;
     }
 
     public double getResurractionRate() {
@@ -29,6 +29,57 @@ public class Undead extends Monster {
         int maxLife = getmaxLife();
         curentLife = maxLife / 2;
         setLife(curentLife);
+    }
+
+
+    public static class UndeadBuilder {
+
+        private int life;
+        private int speed;
+        private int armor;
+        private int attack;
+        private int xpValue;
+        private int level;
+        private double resurractionRate;
+
+        public UndeadBuilder life(int life) {
+            this.life = life;
+            return this;
+        }
+
+        public UndeadBuilder speed(int speed) {
+            this.speed = speed;
+            return this;
+        }
+
+        public UndeadBuilder armor(int armor) {
+            this.armor = armor;
+            return this;
+        }
+
+        public UndeadBuilder attack(int attack) {
+            this.attack = attack;
+            return this;
+        }
+
+        public UndeadBuilder xpValue(int xpValue) {
+            this.xpValue = xpValue;
+            return this;
+        }
+
+        public UndeadBuilder level(int level) {
+            this.level = level;
+            return this;
+        }
+
+        public UndeadBuilder resurractionRate(double resurractionRate) {
+            this.resurractionRate = resurractionRate;
+            return this;
+        }
+
+        public Undead build() {
+            return new Undead(life, speed, armor, attack, xpValue, level, resurractionRate);
+        }
     }
 
 }
