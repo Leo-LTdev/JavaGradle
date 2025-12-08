@@ -16,41 +16,50 @@ public class App {
         Aventurer player = initPlayer(scanner);
         boolean inGame = true;
 
-        while (inGame && player != null) {
+        mainMenu(inGame, player, scanner);
+    }
+
+    public static void mainMenu(boolean inGame, Aventurer player, Scanner scanner) {
+        while (inGame && player != null && player.getLife() > 0) {
             System.out.println("1 : Voir ses stats");
-            System.out.println("2 : Baston");
+            System.out.println("2 : Combattre");
             System.out.println("9 : Quitter la partie");
-            if (scanner.hasNextInt()) {
-                int nombre = scanner.nextInt();
-                if (nombre == 1) {
-                    player.showStats();
-                }
-                if (nombre == 2) {
-                    fight(player, scanner);
-                }
-                if (nombre == 9) {
-                    inGame = false;
-                    System.out.println("Fin du jeu.");
-                }
+            int nombre = scanner.nextInt();
+            if (nombre == 1) {
+                /* Stats */
+                player.showStats();
+            }
+            if (nombre == 2) {
+                /* Combat */
+                fight(player, scanner);
+            }
+            if (nombre == 9) {
+                /* Fin du jeu */
+                inGame = false;
+                System.out.println("Fin du jeu.");
             }
         }
     }
-    
+
     public static Aventurer initPlayer(Scanner scanner) {
         System.out.println("Choisis une race parmis celle-ci :");
         System.out.println("1 : Humain");
         System.out.println("2 : Elfes");
         System.out.println("3 : Nains");
 
-        if (scanner.hasNextInt()) {
-            int nombre = scanner.nextInt();
-            return AventurerFactory.CreatAventurer(nombre);
-        }
-        return null;
+        int nombre = scanner.nextInt();
+        return AventurerFactory.CreatAventurer(nombre);
     }
 
     public static void fight(Aventurer player, Scanner scanner) {
         Monster monster = randomMonster();
+        if (monster instanceof Orc) {
+            System.err.println("Vous avez face à un Orc");
+        } else if (monster instanceof Tyranide) {
+            System.err.println("Vous avez face à un Tyranide");
+        } else if (monster instanceof Undead) {
+            System.err.println("Vous avez face à un Undead");
+        }
         while (player.getLife() > 0 && monster.getLife() > 0) {
             System.out.println("1 : Attaquer");
             System.out.println("2 : Utiliser un objet");
@@ -59,6 +68,9 @@ public class App {
             if (nombre == 1) {
                 player.dealDamage(monster);
                 monster.dealDamage(player);
+            }
+            if (nombre == 3) {
+                player.escape();
             }
         }
     }
