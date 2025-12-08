@@ -49,23 +49,13 @@ public class Aventurer extends Character {
         inventory.add(object);
     }
 
-
-
-    //Methode
     @Override
-    public void dealDamage(Character target){
-        int damage = this.getAttack() - target.getArmor();
-        if (damage < 0) {
-            damage = 0;
-        }
-        target.setLife(target.getLife() - damage);
-
-        if (target.isDead()){
-            System.out.println("Vous avez tuer votre énemie");
-        } else {
-            System.out.println("Vous avez infligé " + damage + " degat");
-            System.out.println("Il reste " + target.getLife() + " PV");
-        }
+    public void showStats() {
+        System.out.println("Vie : " + getLife());
+        System.out.println("Armure : " + getArmor());
+        System.out.println("Vitesse : " + getSpeed());
+        System.out.println("Attaque : " + getAttack());
+        System.out.println("EXP : " + getExp());
     }
 
     protected boolean isDead(){
