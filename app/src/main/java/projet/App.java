@@ -42,7 +42,7 @@ public class App {
                     System.out.println("EXP : " + Player.getExp());
                 }
                 if (nombre == 2) {
-                    Tyranide Monster = new Tyranide();
+                    Tyranide Monster = FactoryMonstre.createTyranide();    
                     while (Player.getLife() > 0 && Monster.getLife() > 0) {
                         System.out.println("1 : Attaquer");
                         nombre = scanner.nextInt();
