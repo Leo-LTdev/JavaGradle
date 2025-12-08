@@ -1,5 +1,5 @@
 package projet.Class.Object;
 
-public class Object {
-    
+public abstract class Object {
+
 }
