@@ -5,28 +5,12 @@ public class Tyranide extends Monster {
     private int claws;
 
     public Tyranide(int life, int speed, int armor, int attack, int xpValue, int level, int claws) {
-        super(life, speed, armor, attack, xpValue, level);
+        super(life, speed, armor, attack + claws, xpValue, level);
         this.claws = claws;
     }
 
     public int getClaws() {
         return claws;
-    }
-
-    @Override
-    public void dealDamage(Character target) {
-        int damage = this.getAttack() - target.getArmor() + this.claws;
-        if (damage < 0) {
-            damage = 0;
-        }
-        target.setLife(target.getLife() - damage);
-
-        if (target.isDead()) {
-            System.out.println("Le tyrannide vous a tué !");
-        } else {
-            System.out.println("Le tyrannide vous attaque et vous inflige " + damage + " points de dégâts.");
-            System.out.println("Il vous reste " + target.getLife() + " PV");
-        }
     }
 
     public static class TyranideBuilder {
