@@ -73,7 +73,7 @@ public class Aventurer extends Character {
         this.gear.setArmor(armor);
     }
 
-    protected void escape() {
+    public void escape() {
         if (Math.random() < 0.3) {
             System.out.println("Vous avez réussi à fuir le combat !");
         } else {
