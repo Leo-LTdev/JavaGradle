@@ -71,7 +71,6 @@ public abstract class Character {
 
     // Méthode
     public int damageReduction(Character target){
-        System.err.println(Math.round((this.getAttack() * target.getArmor()) / 100));
         return Math.round((this.getAttack() * target.getArmor()) / 100);
     }
     
