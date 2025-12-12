@@ -1,5 +1,17 @@
 package projet.Class.Object;
 
 public class Potion extends Object {
-    
+    private int nbOfUse;
+
+
+    public int getNbOfUse(){return nbOfUse;}
+
+    protected void setNbOfUse(int nbOfUse){this.nbOfUse = nbOfUse;}
+
+    public Potion(ObjectBuilder builder){
+        this.setName(builder.getName());
+        this.setPower(builder.getPower());
+        this.setNbOfUse(builder.getNbOfUse());
+    }
+
 }

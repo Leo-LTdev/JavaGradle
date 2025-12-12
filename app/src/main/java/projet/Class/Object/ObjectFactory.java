@@ -56,6 +56,35 @@ public class ObjectFactory {
 
     }
 
+    public static Potion createPotion(int choice){
+        ObjectBuilder factory = ObjectBuilder.create();
+    
+        switch (choice) {
+            case 1:
+               return factory.name("Ligth Potion")
+                            .power(35)
+                            .nbOfUse(2)
+                            .buildPotion();
+            
+            case 2:
+                return factory.name("Normal Potion")
+                            .power(55)
+                            .nbOfUse(1)
+                            .buildPotion();
+            
+            case 3:
+                return factory.name("Heavy Potion")
+                            .power(80)
+                            .nbOfUse(2)
+                            .buildPotion();
+        
+            default:
+                throw new IllegalArgumentException("erreur vous n'avez pas choisi un aventurier");
+
+        }
+
+    }
+
     public static Gear baseGear(){
         Gear gear = new Gear();
         return gear;

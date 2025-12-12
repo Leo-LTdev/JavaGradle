@@ -2,7 +2,6 @@ package projet.Class.Object;
 
 public class Weapon extends Object {
 
-
     public Weapon(){
     }
 

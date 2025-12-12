@@ -6,9 +6,11 @@ public class ObjectBuilder {
 
     private String name;
     private int power;
+    private int nbOfUse;
 
     public String getName(){return name;}
     public int getPower(){return power;}
+    public int getNbOfUse(){return nbOfUse;}
 
     private ObjectBuilder(){};
 
@@ -22,7 +24,8 @@ public class ObjectBuilder {
 
     public ObjectBuilder name(String value){this.name = value; return this;}
     public ObjectBuilder power(int value){this.power = value; return this;}
+    public ObjectBuilder nbOfUse(int value){this.nbOfUse = value; return this;}
     public Weapon buildWeapon(){return new Weapon(this);}
     public Armor buildArmor(){return new Armor(this);}
-    
+    public Potion buildPotion(){return new Potion(this);}
 }
