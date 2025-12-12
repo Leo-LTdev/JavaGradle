@@ -5,14 +5,14 @@ import projet.Class.Object.Gear;
 import projet.Class.Object.Weapon;
 import projet.Class.Object.Armor;
 
-public class Aventurer extends Character {
 
+public abstract class Aventurer extends Character {
     private ArrayList<Object> inventory;
     private Gear gear;
     private int level;
     private int exp;
 
-    public Aventurer() {
+    public Aventurer(){
         super();
         this.level = 1;
         this.exp = 0;
@@ -20,27 +20,27 @@ public class Aventurer extends Character {
         this.gear = new Gear();
     }
 
-    public Aventurer(int life, int speed, int armor, int attack, Gear gear, int level, int exp) {
-        super(life, speed, armor, attack);
+    public Aventurer(int life, int speed, int armor, int attack,Gear gear, int level, int exp){
+        super(life,speed,armor,attack);
         this.gear = gear;
         this.level = level;
         this.exp = exp;
     }
 
     //All get
-    public ArrayList<Object> getInventory() {
+    public ArrayList<Object> getInventory(){
         return inventory;
     }
 
-    public Gear getGear() {
+    public Gear getGear(){
         return gear;
     }
 
-    public int getLevel() {
+    public int getLevel(){
         return level;
     }
 
-    public int getExp() {
+    public int getExp(){
         return exp;
     }
 
@@ -49,7 +49,7 @@ public class Aventurer extends Character {
     }
 
     //All set
-    protected void setIventory(Object object) {
+    protected void setIventory(Object object){
         inventory.add(object);
     }
 
@@ -72,12 +72,12 @@ public class Aventurer extends Character {
         if (totalDamage < 0) {
             totalDamage = 0;
         }
-        target.setLife(target.getLife() - totalDamage);
+        target.takeDamage(totalDamage);
 
         if (target.isDead()){
             System.out.println("Vous avez tué le monstre en infligeant : " + totalDamage);
         } else {
-            System.out.println("Vous avez infligé " + totalDamage + " dégats");
+            System.out.println("Vous avez infligé " + totalDamage + " degat");
             System.out.println("Il reste " + target.getLife() + " PV");
         }
     }
