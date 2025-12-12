@@ -1,6 +1,8 @@
 package projet.Class.Character;
 
-public abstract class Monster extends Character {
+import projet.Class.Interface.Ideal_damage;
+
+public abstract class Monster extends Character implements Ideal_damage {
 
     private int xpValue;
     private int level;
@@ -17,6 +19,7 @@ public abstract class Monster extends Character {
         this.level = level;
     }
 
+    @Override
     public void dealDamage(Character target) {
         int damage = this.getAttack() - damageReduction(target);
         if (damage < 0) {

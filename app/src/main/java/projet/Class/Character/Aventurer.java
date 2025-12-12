@@ -1,19 +1,22 @@
 package projet.Class.Character;
 
 import java.util.ArrayList;
+
+import projet.Class.Interface.Ideal_damage;
+import projet.Class.Interface.IseReposer;
 import projet.Class.Object.Gear;
 import projet.Class.Object.Weapon;
 import projet.Class.Object.Armor;
 import projet.Class.Object.Potion;
 
+public abstract class Aventurer extends Character implements Ideal_damage, IseReposer {
 
-public abstract class Aventurer extends Character {
     private ArrayList<Object> inventory;
     private Gear gear;
     private int level;
     private int exp;
 
-    public Aventurer(){
+    public Aventurer() {
         super();
         this.level = 1;
         this.exp = 0;
@@ -21,36 +24,36 @@ public abstract class Aventurer extends Character {
         this.gear = new Gear();
     }
 
-    public Aventurer(int life, int speed, int armor, int attack,Gear gear, int level, int exp){
-        super(life,speed,armor,attack);
+    public Aventurer(int life, int speed, int armor, int attack, Gear gear, int level, int exp) {
+        super(life, speed, armor, attack);
         this.gear = gear;
         this.level = level;
         this.exp = exp;
     }
 
     //All get
-    public ArrayList<Object> getInventory(){
+    public ArrayList<Object> getInventory() {
         return inventory;
     }
 
-    public Gear getGear(){
+    public Gear getGear() {
         return gear;
     }
 
-    public int getLevel(){
+    public int getLevel() {
         return level;
     }
 
-    public int getExp(){
+    public int getExp() {
         return exp;
     }
 
-    private void setExp(int exp){
+    private void setExp(int exp) {
         this.exp = exp;
     }
 
     //All set
-    protected void setIventory(Object object){
+    protected void setIventory(Object object) {
         inventory.add(object);
     }
 
@@ -63,19 +66,20 @@ public abstract class Aventurer extends Character {
         System.out.println("EXP : " + getExp());
     }
 
-    protected void gainExp(Monster monster){
+    protected void gainExp(Monster monster) {
         int total = getExp() + monster.getXpvalue();
         setExp(total);
     }
 
-    public void dealDamage(Character target){
+    @Override
+    public void dealDamage(Character target) {
         int totalDamage = getAttack() - damageReduction(target);
         if (totalDamage < 0) {
             totalDamage = 0;
         }
         target.takeDamage(totalDamage);
 
-        if (target.isDead()){
+        if (target.isDead()) {
             System.out.println("Vous avez tué le monstre en infligeant : " + totalDamage);
         } else {
             System.out.println("Vous avez infligé " + totalDamage + " degat");
@@ -83,19 +87,21 @@ public abstract class Aventurer extends Character {
         }
     }
 
+
     public void drinkPotion(Potion potion){
         setLife(getLife() + potion.getPower());
         potion.reduceUse();
         System.out.println("Vous vous soignez de : " + potion.getPower() + " PV");
+
     }
 
-    protected void equipWeapon(Weapon weapon){
-        
+    protected void equipWeapon(Weapon weapon) {
+
         setAttack(getAttack() - getGear().getWeapon().getPower());
         getInventory().add(getGear().getWeapon());
-        
+
         getGear().setWeapon(weapon);
-        
+
         int index = this.getInventory().indexOf(weapon);
         getInventory().remove(index);
 
@@ -105,13 +111,13 @@ public abstract class Aventurer extends Character {
         System.out.println("Vous equipez " + weapon.getName());
     }
 
-    protected void equipArmor(Armor armor){
+    protected void equipArmor(Armor armor) {
 
         setAttack(getArmor() - getGear().getAmor().getPower());
         getInventory().add(getGear().getAmor());
-        
+
         getGear().setArmor(armor);
-        
+
         int index = this.getInventory().indexOf(armor);
         getInventory().remove(index);
 
@@ -129,5 +135,11 @@ public abstract class Aventurer extends Character {
             System.out.println("Échec de la fuite ! Vous allez affronter la réalité big noob !");
             return false;
         }
+    }
+
+    @Override
+    public void seReposer() {
+        this.setLife(getLife() + 20);
+        System.out.println("Vous avez pu vous reposer et récupérer 20 points de vie !");
     }
 }
