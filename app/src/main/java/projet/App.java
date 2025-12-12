@@ -5,93 +5,16 @@ package projet;
 
 import java.util.Scanner;
 
-import java.util.Random;
-
-import projet.Class.Character.*;
+import projet.Class.Character.Aventurer;
+import projet.Menu.Menu;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Aventurer player = initPlayer(scanner);
+        Aventurer player = Menu.initPlayer(scanner);
         boolean inGame = true;
 
-        mainMenu(inGame, player, scanner);
-    }
-
-    public static void mainMenu(boolean inGame, Aventurer player, Scanner scanner) {
-        while (inGame && player != null && player.getLife() > 0) {
-            System.out.println("1 : Voir ses stats");
-            System.out.println("2 : Combattre");
-            System.out.println("9 : Quitter la partie");
-            int nombre = scanner.nextInt();
-            if (nombre == 1) {
-                /* Stats */
-                player.showStats();
-            }
-            if (nombre == 2) {
-                /* Combat */
-                fight(player, scanner);
-            }
-            if (nombre == 9) {
-                /* Fin du jeu */
-                inGame = false;
-                System.out.println("Fin du jeu.");
-            }
-        }
-    }
-
-    public static Aventurer initPlayer(Scanner scanner) {
-        System.out.println("Choisis une race parmis celle-ci :");
-        System.out.println("1 : Humain");
-        System.out.println("2 : Elfes");
-        System.out.println("3 : Nains");
-
-        int nombre = scanner.nextInt();
-        return AventurerFactory.CreatAventurer(nombre);
-    }
-
-    public static void fight(Aventurer player, Scanner scanner) {
-        Monster monster = randomMonster();
-        boolean escape = true;
-        if (monster instanceof Orc) {
-            System.err.println("Vous avez face à un Orc");
-        } else if (monster instanceof Tyranide) {
-            System.err.println("Vous avez face à un Tyranide");
-        } else if (monster instanceof Undead) {
-            System.err.println("Vous avez face à un Undead");
-        }
-        while (player.getLife() > 0 && monster.getLife() > 0 && escape) {
-            System.out.println("1 : Attaquer");
-            System.out.println("2 : Utiliser un objet");
-            System.out.println("3 : Fuir");
-            int nombre = scanner.nextInt();
-            if (nombre == 1) {
-                player.dealDamage(monster);
-                monster.dealDamage(player);
-            }
-            if (nombre == 3) {
-                if (player.escape()) {
-                    escape = false;
-                } else {
-                    monster.dealDamage(player);
-                }
-            }
-        }
-    }
-
-    public static Monster randomMonster() {
-        Random RANDOM = new Random();
-        int random = RANDOM.nextInt(3);
-        switch (random) {
-            case 1:
-                return FactoryMonstre.createTyranide();
-            case 2:
-                return FactoryMonstre.createUndead();
-            case 3:
-                return FactoryMonstre.createOrc();
-            default:
-                return FactoryMonstre.createOrc();
-        }
+        Menu.mainMenu(inGame, player, scanner);
     }
 }
