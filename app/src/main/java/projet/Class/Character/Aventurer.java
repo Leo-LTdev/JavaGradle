@@ -82,15 +82,6 @@ public abstract class Aventurer extends Character {
         }
     }
 
-
-
-    protected boolean isDead(){
-        if (getLife() <= 0) {
-            return true;
-        }
-        return false;
-    }
-
     protected void equipWeapon(Weapon weapon){
         
         setAttack(getAttack() - getGear().getWeapon().getPower());

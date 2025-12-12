@@ -100,12 +100,11 @@ public abstract class Character {
         System.out.println("Attaque : " + getAttack());
     }
 
-    protected boolean isDead(){
-        if (this.life <= 0) {
+    public boolean isDead(){
+        if (getLife() <= 0) {
             return true;
         }
         return false;
     }
-
 
 }
