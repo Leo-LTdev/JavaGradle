@@ -12,7 +12,7 @@ public class Aventurer extends Character {
     private int level;
     private int exp;
 
-    public Aventurer() {avez
+    public Aventurer() {
         super();
         this.level = 1;
         this.exp = 0;
