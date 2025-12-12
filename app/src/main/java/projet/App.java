@@ -5,76 +5,16 @@ package projet;
 
 import java.util.Scanner;
 
-import java.util.Random;
-
-import projet.Class.Character.*;
+import projet.Class.Character.Aventurer;
+import projet.Menu.Menu;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Aventurer player = initPlayer(scanner);
+        Aventurer player = Menu.initPlayer(scanner);
         boolean inGame = true;
 
-        while (inGame && player != null) {
-            System.out.println("1 : Voir ses stats");
-            System.out.println("2 : Baston");
-            System.out.println("9 : Quitter la partie");
-            if (scanner.hasNextInt()) {
-                int nombre = scanner.nextInt();
-                if (nombre == 1) {
-                    player.showStats();
-                }
-                if (nombre == 2) {
-                    fight(player, scanner);
-                }
-                if (nombre == 9) {
-                    inGame = false;
-                    System.out.println("Fin du jeu.");
-                }
-            }
-        }
-    }
-    
-    public static Aventurer initPlayer(Scanner scanner) {
-        System.out.println("Choisis une race parmis celle-ci :");
-        System.out.println("1 : Humain");
-        System.out.println("2 : Elfes");
-        System.out.println("3 : Nains");
-
-        if (scanner.hasNextInt()) {
-            int nombre = scanner.nextInt();
-            return AventurerFactory.CreatAventurer(nombre);
-        }
-        return null;
-    }
-
-    public static void fight(Aventurer player, Scanner scanner) {
-        Monster monster = randomMonster();
-        while (player.getLife() > 0 && monster.getLife() > 0) {
-            System.out.println("1 : Attaquer");
-            System.out.println("2 : Utiliser un objet");
-            System.out.println("3 : Fuir");
-            int nombre = scanner.nextInt();
-            if (nombre == 1) {
-                player.dealDamage(monster);
-                monster.dealDamage(player);
-            }
-        }
-    }
-
-    public static Monster randomMonster() {
-        Random RANDOM = new Random();
-        int random = RANDOM.nextInt(3);
-        switch (random) {
-            case 1:
-                return FactoryMonstre.createTyranide();
-            case 2:
-                return FactoryMonstre.createUndead();
-            case 3:
-                return FactoryMonstre.createOrc();
-            default:
-                return FactoryMonstre.createOrc();
-        }
+        Menu.mainMenu(inGame, player, scanner);
     }
 }

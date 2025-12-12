@@ -5,14 +5,12 @@ public class Armor extends Object {
     int protection;
 
 
-    public Armor(){
-        this.name = "armure de fer";
-        this.protection = 25;
-    }
+    public Armor(){}
 
-    public Armor(String name, int protection){
-        this.name = name;
-        this.protection = protection;
+    public Armor(NotCusumBuilder builder){
+        this.setName(builder.getName());
+        this.setPower(builder.getPower());
     }
     
+
 }

@@ -12,6 +12,7 @@ public class AventurerFactory {
                              .speed(25)
                              .armor(10)
                              .attack(35)
+                             .level()
                              .buildHuman();
             
             case 2:
@@ -19,6 +20,7 @@ public class AventurerFactory {
                                 .speed(40)
                                 .armor(10)
                                 .attack(40)
+                                .level()
                                 .buildEld();
             
             case 3:
@@ -26,6 +28,7 @@ public class AventurerFactory {
                             .speed(20)
                             .armor(25)
                             .attack(35)
+                            .level()
                             .buildDwarf();
         
             default:
