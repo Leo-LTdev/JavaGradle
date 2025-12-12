@@ -3,11 +3,12 @@ package projet.Class.Character;
 import java.util.ArrayList;
 
 import projet.Class.Interface.Ideal_damage;
+import projet.Class.Interface.IseReposer;
 import projet.Class.Object.Gear;
 import projet.Class.Object.Weapon;
 import projet.Class.Object.Armor;
 
-public abstract class Aventurer extends Character implements Ideal_damage {
+public abstract class Aventurer extends Character implements Ideal_damage, IseReposer {
 
     private ArrayList<Object> inventory;
     private Gear gear;
@@ -128,5 +129,11 @@ public abstract class Aventurer extends Character implements Ideal_damage {
             System.out.println("Échec de la fuite ! Vous allez affronter la réalité big noob !");
             return false;
         }
+    }
+
+    @Override
+    public void seReposer() {
+        this.setLife(getLife() + 20);
+        System.out.println("Vous avez pu vous reposer et récupérer 20 points de vie !");
     }
 }
