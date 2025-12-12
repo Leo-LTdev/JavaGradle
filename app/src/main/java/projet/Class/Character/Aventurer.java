@@ -109,6 +109,8 @@ public abstract class Aventurer extends Character {
 
         int totalAtk = getAttack() + weapon.getPower();
         setAttack(totalAtk);
+
+        System.out.println("Vous equipez " + weapon.getName());
     }
 
     protected void equipArmor(Armor armor){
