@@ -1,12 +1,11 @@
 package projet.Class.Object;
 
-import java.util.GregorianCalendar;
 
 public class ObjectFactory {
 
     public static Weapon CreateSword(int choice){
     
-        NotCusumBuilder factory = NotCusumBuilder.create();
+        ObjectBuilder factory = ObjectBuilder.create();
     
         switch (choice) {
             case 1:
@@ -32,7 +31,7 @@ public class ObjectFactory {
 
 
     public static Armor CreateAmor(int choice){
-        NotCusumBuilder factory = NotCusumBuilder.create();
+        ObjectBuilder factory = ObjectBuilder.create();
     
         switch (choice) {
             case 1:

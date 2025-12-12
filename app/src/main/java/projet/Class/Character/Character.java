@@ -87,6 +87,10 @@ public abstract class Character {
         //     System.out.println("Vous avez infligé " + damage + " degat");
         //     System.out.println("Il reste " + target.getLife() + " PV");
         // }
+
+    public void takeDamage(int damage){
+        this.setLife(getLife() - damage);
+    }
     
 
     public void showStats() {
