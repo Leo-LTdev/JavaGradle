@@ -6,8 +6,8 @@ public class Gear {
 
 
     public Gear(){
-        weapon = new Weapon();
-        armor = new Armor();
+        this.setWeapon(ObjectFactory.CreateSword(1));
+        this.setArmor(ObjectFactory.CreateAmor(1));
     }
 
 
@@ -27,4 +27,9 @@ public class Gear {
     public void setArmor(Armor armor){
         this.armor = armor;
     }
+
+
+    
+
+
 }

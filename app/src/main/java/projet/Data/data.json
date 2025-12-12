@@ -1,0 +1,49 @@
+{
+    "weapon" : [
+        {
+            "name" : "Wooden Sword",
+            "power" : 5
+        },
+        {
+            "name" : "Iron Sword",
+            "power" : 10
+        },
+        {
+            "name" : "Diamond Sword",
+            "power" : 15
+        }
+    ],
+
+    "armor" : [
+        {
+            "name" : "Cloth Armor",
+            "power" : 5
+        },
+        {
+            "name" : "Leather Armor",
+            "power" : 10
+        },
+        {
+            "name" : "Iron Armor",
+            "power" : 15
+        }
+    ],
+
+    "potion" : [
+        {
+            "name" : "Light Potion",
+            "power" : 35,
+            "useNb" : 2 
+        },
+        {
+            "name" : "Potion",
+            "power" : 55,
+            "useNb" : 1 
+        },
+        {
+            "name" : "Heavy Potion",
+            "power" : 75,
+            "useNb" : 2 
+        }
+    ]
+}
