@@ -77,7 +77,7 @@ public class Aventurer extends Character {
         if (target.isDead()){
             System.out.println("Vous avez tué le monstre en infligeant : " + totalDamage);
         } else {
-            System.out.println("Vous avez infligé " + totalDamage + " degat");
+            System.out.println("Vous avez infligé " + totalDamage + " dégats");
             System.out.println("Il reste " + target.getLife() + " PV");
         }
     }
