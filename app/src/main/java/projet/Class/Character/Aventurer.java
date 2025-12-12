@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import projet.Class.Object.Gear;
 import projet.Class.Object.Weapon;
 import projet.Class.Object.Armor;
+import projet.Class.Object.Potion;
 
 
 public abstract class Aventurer extends Character {
@@ -82,6 +83,12 @@ public abstract class Aventurer extends Character {
         }
     }
 
+    public void drinkPotion(Potion potion){
+        setLife(getLife() + potion.getPower());
+        potion.reduceUse();
+        System.out.println("Vous vous soignez de : " + potion.getPower() + " PV");
+    }
+
     protected void equipWeapon(Weapon weapon){
         
         setAttack(getAttack() - getGear().getWeapon().getPower());
@@ -94,6 +101,8 @@ public abstract class Aventurer extends Character {
 
         int totalAtk = getAttack() + weapon.getPower();
         setAttack(totalAtk);
+
+        System.out.println("Vous equipez " + weapon.getName());
     }
 
     protected void equipArmor(Armor armor){
@@ -108,6 +117,8 @@ public abstract class Aventurer extends Character {
 
         int totalAtk = getArmor() + armor.getPower();
         setAttack(totalAtk);
+
+        System.out.println("Vous equipez " + armor.getName());
     }
 
     public boolean escape() {

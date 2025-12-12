@@ -9,14 +9,16 @@ public class AventurerFactory {
         switch (choice) {
             case 1:
                return factory.life(100)
-                             .speed(25)
-                             .armor(10)
-                             .attack(35)
-                             .level()
-                             .buildHuman();
+                            .gear()
+                            .speed(25)
+                            .armor(10)
+                            .attack(35)
+                            .level()
+                            .buildHuman();
             
             case 2:
                 return factory.life(80)
+                                .gear()
                                 .speed(40)
                                 .armor(10)
                                 .attack(40)
@@ -25,6 +27,7 @@ public class AventurerFactory {
             
             case 3:
                 return factory.life(120)
+                            .gear()
                             .speed(20)
                             .armor(25)
                             .attack(35)

@@ -8,6 +8,10 @@ public class Potion extends Object {
 
     protected void setNbOfUse(int nbOfUse){this.nbOfUse = nbOfUse;}
 
+    public void reduceUse(){
+        setNbOfUse(getNbOfUse() - 1);
+    }
+
     public Potion(ObjectBuilder builder){
         this.setName(builder.getName());
         this.setPower(builder.getPower());
