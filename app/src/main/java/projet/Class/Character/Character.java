@@ -74,20 +74,20 @@ public abstract class Character {
         return Math.round((this.getAttack() * target.getArmor()) / 100);
     }
     
-    public void dealDamage(Character target){
-        int damage = this.getAttack() - damageReduction(target);
-        if (damage < 0) {
-            damage = 0;
-        }
-        target.setLife(target.getLife() - damage);
+    public abstract void dealDamage(Character target);
+        // int damage = this.getAttack() - damageReduction(target);
+        // if (damage < 0) {
+        //     damage = 0;
+        // }
+        // target.setLife(target.getLife() - damage);
 
-        if (target.isDead()){
-            System.out.println("Vous avez tuer votre énemie en infligent : " + damage);
-        } else {
-            System.out.println("Vous avez infligé " + damage + " degat");
-            System.out.println("Il reste " + target.getLife() + " PV");
-        }
-    }
+        // if (target.isDead()){
+        //     System.out.println("Vous avez tuer votre énemie en infligent : " + damage);
+        // } else {
+        //     System.out.println("Vous avez infligé " + damage + " degat");
+        //     System.out.println("Il reste " + target.getLife() + " PV");
+        // }
+    
 
     public void showStats() {
         System.out.println("Vie : " + getLife());

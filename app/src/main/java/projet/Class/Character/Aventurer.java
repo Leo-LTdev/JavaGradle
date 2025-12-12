@@ -44,6 +44,10 @@ public class Aventurer extends Character {
         return exp;
     }
 
+    private void setExp(int exp){
+        this.exp = exp;
+    }
+
     //All set
     protected void setIventory(Object object){
         inventory.add(object);
@@ -58,6 +62,27 @@ public class Aventurer extends Character {
         System.out.println("EXP : " + getExp());
     }
 
+    protected void gainExp(Monster monster){
+        int total = getExp() + monster.getXpvalue();
+        setExp(total);
+    }
+
+    public void dealDamage(Character target){
+        int totalDamage = getAttack() - damageReduction(target);
+        if (totalDamage < 0) {
+            totalDamage = 0;
+        }
+        target.setLife(target.getLife() - totalDamage);
+
+        if (target.isDead()){
+            System.out.println("Vous avez tué le monstre en infligeant : " + totalDamage);
+        } else {
+            System.out.println("Vous avez infligé " + totalDamage + " degat");
+            System.out.println("Il reste " + target.getLife() + " PV");
+        }
+    }
+
+
     protected boolean isDead(){
         if (getLife() <= 0) {
             return true;
@@ -66,11 +91,31 @@ public class Aventurer extends Character {
     }
 
     protected void equipWeapon(Weapon weapon){
-        this.gear.setWeapon(weapon);
+        
+        setAttack(getAttack() - getGear().getWeapon().getPower());
+        getInventory().add(getGear().getWeapon());
+        
+        getGear().setWeapon(weapon);
+        
+        int index = this.getInventory().indexOf(weapon);
+        getInventory().remove(index);
+
+        int totalAtk = getAttack() + weapon.getPower();
+        setAttack(totalAtk);
     }
 
     protected void equipArmor(Armor armor){
-        this.gear.setArmor(armor);
+
+        setAttack(getArmor() - getGear().getAmor().getPower());
+        getInventory().add(getGear().getAmor());
+        
+        getGear().setArmor(armor);
+        
+        int index = this.getInventory().indexOf(armor);
+        getInventory().remove(index);
+
+        int totalAtk = getArmor() + armor.getPower();
+        setAttack(totalAtk);
     }
 
 

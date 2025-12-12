@@ -16,5 +16,9 @@ public abstract class Monster extends Character {
         this.xpValue = xpValue;
         this.level = level;
     }
+    
 
+    public int getXpvalue(){
+        return xpValue;
+    }
 }
