@@ -6,7 +6,7 @@ import projet.Class.Object.Weapon;
 import projet.Class.Object.Armor;
 
 
-public class Aventurer extends Character {
+public abstract class Aventurer extends Character {
     private ArrayList<Object> inventory;
     private Gear gear;
     private int level;
@@ -72,7 +72,7 @@ public class Aventurer extends Character {
         if (totalDamage < 0) {
             totalDamage = 0;
         }
-        target.setLife(target.getLife() - totalDamage);
+        target.takeDamage(totalDamage);
 
         if (target.isDead()){
             System.out.println("Vous avez tué le monstre en infligeant : " + totalDamage);
@@ -81,6 +81,7 @@ public class Aventurer extends Character {
             System.out.println("Il reste " + target.getLife() + " PV");
         }
     }
+
 
 
     protected boolean isDead(){
