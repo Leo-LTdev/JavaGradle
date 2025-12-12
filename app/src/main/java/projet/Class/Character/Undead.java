@@ -13,8 +13,7 @@ public class Undead extends Monster {
         return resurractionRate;
     }
 
-    @Override
-    protected boolean isDead() {
+    public boolean isDead() {
         if (Math.random() < this.resurractionRate) {
             resurrect();
             return false;

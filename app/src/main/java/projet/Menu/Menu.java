@@ -46,16 +46,17 @@ public class Menu {
 
     public static void fight(Aventurer player, Scanner scanner) {
         Monster monster = randomMonster();
-        System.out.println(infightMonster(monster));
+        System.out.println(infightMonster(monster)); /* Print de l'ennemi */
         boolean escape = true;
-        while (player.getLife() > 0 && monster.getLife() > 0 && escape) {
+        int nombre;
+        while (!player.isDead() && !monster.isDead() && escape) {
             System.out.println("1 : Attaquer");
             System.out.println("2 : Utiliser un objet");
             System.out.println("3 : Fuir");
-            int nombre = scanner.nextInt();
+            nombre = scanner.nextInt();
             if (nombre == 1) {
                 player.dealDamage(monster);
-                if (monster.getLife() > 0) {
+                if (!monster.isDead()) {
                     monster.dealDamage(player);
                 }
             }
@@ -80,9 +81,9 @@ public class Menu {
     }
 
     public static Monster randomMonster() {
-        Random RANDOM = new Random();
-        int random = RANDOM.nextInt(3);
-        switch (random) {
+        Random random = new Random();
+        int randomNumber = random.nextInt(3);
+        switch (randomNumber) {
             case 1:
                 return FactoryMonstre.createTyranide();
             case 2:
