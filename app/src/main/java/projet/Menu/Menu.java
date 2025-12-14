@@ -64,50 +64,58 @@ public class Menu {
     public static void drinkPot(Aventurer player, Scanner scanner) throws InterruptedException {
         ArrayList<Object> originalInventory = player.getInventory();
         ArrayList<Object> inventory = new ArrayList<>(originalInventory);
+        for (int i = 0; i < inventory.size(); i++) {
+            Object actualItem = inventory.get(i);
+            if (!(actualItem instanceof Potion)) {
+                inventory.remove(i);
+                i--;
+            } else {
+                System.err.println(i + " : " + inventory.get(i));
+            }
+        }
         if (inventory.isEmpty()) {
             System.err.println("Inventaire vide, retour au menu");
             Thread.sleep(1000);
         } else {
-            for (int i = 0; i < inventory.size(); i++) {
-                Object actualItem = inventory.get(i);
-                if (!(actualItem instanceof Potion)) {
-                    inventory.remove(i);
-                    i--;
-                } else {
-                    System.err.println(i + " : " + inventory.get(i));
-                }
-            }
-            System.err.println("Voici ton inventaire, écrit le nombre de la potion que tu veux :");
+            System.err.println("Voici ton inventaire, écrit le nombre de la potion que tu veux équiper :");
             int choice = scanner.nextInt();
-            Object Item = inventory.get(choice);
-            player.drinkPotion((Potion) Item);
+            if (choice > inventory.size() - 1) {
+                System.err.println("La potion choisis existe pas !");
+            } else {
+                Object Item = inventory.get(choice);
+                player.drinkPotion((Potion) Item);
+            }
         }
     }
 
     public static void gearEquip(Aventurer player, Scanner scanner) throws InterruptedException {
         ArrayList<Object> originalInventory = player.getInventory();
         ArrayList<Object> inventory = new ArrayList<>(originalInventory);
+        for (int i = 0; i < inventory.size(); i++) {
+            Object actualItem = inventory.get(i);
+            if (actualItem instanceof Potion) {
+                inventory.remove(i);
+                i--;
+            } else {
+                System.err.println(i + " : " + inventory.get(i));
+            }
+        }
         if (inventory.isEmpty()) {
             System.err.println("Inventaire vide, retour au menu");
             Thread.sleep(1000);
         } else {
-            for (int i = 0; i < inventory.size(); i++) {
-                Object actualItem = inventory.get(i);
-                if (actualItem instanceof Potion) {
-                    inventory.remove(i);
-                    i--;
-                } else {
-                    System.err.println(i + " : " + inventory.get(i));
-                }
-            }
-            System.err.println("Voici ton inventaire, écrit le nombre de l'équipement que tu veux :");
+            System.err.println("Voici ton inventaire, écrit le nombre de l'équipement que tu veux équiper :");
             int choice = scanner.nextInt();
-            Object Item = inventory.get(choice);
-            if (Item instanceof Armor) {
-                player.equipArmor((Armor) Item);
-            }
-            if (Item instanceof Weapon) {
-                player.equipWeapon((Weapon) Item);
+            if (choice > inventory.size() - 1) {
+                System.err.println("L'équipement choisis n'existe pas !");
+            } else {
+                Object Item = inventory.get(choice);
+                if (Item instanceof Armor) {
+                    player.equipArmor((Armor) Item);
+                }
+                if (Item instanceof Weapon) {
+                    player.equipWeapon((Weapon) Item);
+                }
             }
         }
     }

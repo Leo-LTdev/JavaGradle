@@ -79,7 +79,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
             setExp(0);
             System.err.println("Vous êtes passé niveau " + getLevel());
         }
-        System.err.println("Vous avez gagné " + total + " EXP");
+        System.err.println("Vous êtes à " + total + " EXP / 100 avant le niveau supérieur");
     }
 
     @Override
