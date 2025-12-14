@@ -6,8 +6,8 @@ public class Gear {
 
 
     public Gear(){
-        this.setWeapon(ObjectFactory.CreateSword(1));
-        this.setArmor(ObjectFactory.CreateArmor(1));
+        this.setWeapon(ObjectFactory.CreateSword(0));
+        this.setArmor(ObjectFactory.CreateArmor(0));
     }
 
 
