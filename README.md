@@ -86,8 +86,7 @@ To install and run the project, you can use the provided Gradle Wrapper (`gradle
     ./gradlew run
     ```
 3. **Here are the manual installation steps :**
-    Create a gradlew file and
-    put this code in the gradlew file:
+    If the other steps didn't work, just create gradlew and put this code in, it should work
 ```
 #!/bin/sh
 
