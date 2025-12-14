@@ -73,10 +73,9 @@ public class Menu {
                 if (((Potion)actualItem).getNbOfUse() <= 0) {
                     inventory.remove(i);
                     i--;
-                } else {
-                    System.err.println(i + " : " + inventory.get(i));
                 }
             }
+            System.err.println(i + " : " + inventory.get(i));
         }
         if (inventory.isEmpty()) {
             System.err.println("Inventaire vide, retour au menu");
