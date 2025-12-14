@@ -2,7 +2,15 @@
 ```plantuml
 @startuml
 !theme sunlust
-title Vue 1 : Hiérarchie des personnages (Héritage)
+title Vue 1 : Hiérarchie des personnages (Héritage & Interfaces)
+
+interface Ideal_damage {
+  + dealDamage(target: Character)
+}
+
+interface IseReposer {
+  + seReposer()
+}
 
 abstract class Character {
   - life: int
@@ -10,14 +18,17 @@ abstract class Character {
   - speed: int
   - armor: int
   - attack: int
-  + dealDamage(target: Character)
-  # isDead(): boolean
+  + getLife(): int
+  + getmaxLife(): int
+  + getSpeed(): int
+  + getArmor(): int
+  + getAttack(): int
 }
 
 class Gear
 
-class Aventurer {
-  - inventory: ArrayList<Object>
+abstract class Aventurer {
+  - inventory: ArrayList<Item>
   - gear: Gear
   - level: int
   - exp: int
@@ -36,7 +47,8 @@ class Orc {
   }
   
 class Undead { 
-  - resurrectionRate: double 
+  - resurractionRate: double
+  - hasRevived: boolean
   }
 class Tyranide { 
   - claws: int 
@@ -53,6 +65,11 @@ Aventurer <|-- Dwarf
 Monster <|-- Orc
 Monster <|-- Undead
 Monster <|-- Tyranide
+
+' Implémentation des Interfaces
+Ideal_damage <|.. Aventurer
+Ideal_damage <|.. Monster
+IseReposer <|.. Aventurer
 
 ' Relation de Composition
 Aventurer *-- Gear
@@ -72,6 +89,9 @@ class Dwarf
 class Orc
 class Undead
 class Tyranide
+class Weapon
+class Armor
+class Potion
 
 ' Les Builders
 class "AventurerBuilder" as AventurerBuilder {
@@ -80,7 +100,7 @@ class "AventurerBuilder" as AventurerBuilder {
   + armor(value: int): AventurerBuilder
   + attack(value: int): AventurerBuilder
   + buildHuman(): Human
-  + buildElf(): Elf ' <-- Corrigé
+  + buildEld(): Elf
   + buildDwarf(): Dwarf
 }
 
@@ -102,7 +122,7 @@ class "Undead.UndeadBuilder" as UndeadBuilder {
   + attack(value: int): UndeadBuilder
   + xpValue(value: int): UndeadBuilder
   + level(value: int): UndeadBuilder
-  + resurrectionRate(value: double): UndeadBuilder ' <-- Corrigé
+  + resurractionRate(value: double): UndeadBuilder
   + build(): Undead
 }
 
@@ -117,6 +137,15 @@ class "Tyranide.TyranideBuilder" as TyranideBuilder {
   + build(): Tyranide
 }
 
+class "ObjectBuilder" as ObjectBuilder {
+  + name(value: String): ObjectBuilder
+  + power(value: int): ObjectBuilder
+  + nbOfUse(value: int): ObjectBuilder
+  + buildWeapon(): Weapon
+  + buildArmor(): Armor
+  + buildPotion(): Potion
+}
+
 ' Relations de Dépendance (Builders construisent des Produits)
 AventurerBuilder ..> Human
 AventurerBuilder ..> Elf
@@ -124,6 +153,9 @@ AventurerBuilder ..> Dwarf
 OrcBuilder ..> Orc
 UndeadBuilder ..> Undead
 TyranideBuilder ..> Tyranide
+ObjectBuilder ..> Weapon
+ObjectBuilder ..> Armor
+ObjectBuilder ..> Potion
 
 @enduml
 ```
@@ -135,12 +167,15 @@ title Vue 3 : Les Factories (Fabriques)
 
 ' Définition des classes produits et builder nécessaires (doivent être définies pour la liaison)
 class AventurerBuilder
+class ObjectBuilder
 class Orc
 class Undead
 class Tyranide
 class Human
 class Elf
 class Dwarf
+class Weapon
+class Armor
 
 class FactoryMonstre {
   + createMonster(type: String): Monster
@@ -150,7 +185,12 @@ class FactoryMonstre {
 }
 
 class AventurerFactory {
-  + createAventurer(choice: int): Aventurer ' <-- Corrigé
+  + CreatAventurer(choice: int): Aventurer
+}
+
+class ObjectFactory {
+  + CreateSword(choice: int): Weapon
+  + CreateArmor(choice: int): Armor
 }
 
 ' Relations de Dépendance (Factories créent des Produits/utilisent des Builders)
@@ -163,6 +203,10 @@ AventurerFactory ..> Human
 AventurerFactory ..> Elf
 AventurerFactory ..> Dwarf
 
+ObjectFactory ..> ObjectBuilder
+ObjectFactory ..> Weapon
+ObjectFactory ..> Armor
+
 @enduml
 ```
 
@@ -171,25 +215,29 @@ AventurerFactory ..> Dwarf
 !theme sunlust
 title Vue 4 : Objets
 
-abstract class Object
-class Armor {
-  - name: string
-  - protection: int
+abstract class Item {
+  - name: String
+  - power: int
 }
+
+class Armor
+class Weapon
+
+class Potion {
+  - nbOfUse: int
+}
+
 class Gear {
   - weapon: Weapon
   - armor: Armor
 }
-class Potion
-class Weapon {
-  - name: string
-  - power: int
-}
 
-Object <|-- Armor
-Object <|-- Potion
-Object <|-- Gear
-Object <|-- Weapon
+Item <|-- Armor
+Item <|-- Potion
+Item <|-- Weapon
+
+Gear o-- Weapon
+Gear o-- Armor
 
 @enduml 
 ```
@@ -259,7 +307,9 @@ L'utilisation d'interfaces définit des contrats de comportement que les classes
 
 **Fichiers concernés :** 
 - `Character.java` (Classe Abstraite)
-- `Monster.java`, `Aventurer.java`
+- `Monster.java` (Classe Abstraite)
+- `Aventurer.java` (Classe Abstraite)
+- `Item.java` (Classe Abstraite)
 
 **Description :**
 Une hiérarchie de classes claire est établie pour partager le code commun.
@@ -267,6 +317,22 @@ Une hiérarchie de classes claire est établie pour partager le code commun.
 **Pourquoi l'avoir utilisé ?**
 - **DRY (Don't Repeat Yourself) :** La classe abstraite `Character` centralise la gestion des points de vie, de l'armure, de la vitesse et de l'attaque. `Aventurer` et `Monster` héritent de ces fonctionnalités de base sans duplication de code.
 - **Extensibilité :** `Monster` étend `Character` pour ajouter l'expérience (XP), tandis que `Aventurer` ajoute l'inventaire. Cela permet de spécialiser les comportements tout en gardant une base commune solide.
+- **Abstraction des Objets :** La classe abstraite `Item` permet de manipuler indifféremment des Armes, Armures ou Potions dans l'inventaire.
+
+## 6. Organisation du Code (Menu & Main)
+
+**Fichiers concernés :**
+- `Menu.java`
+- `App.java`
+
+**Description :**
+Bien que n'étant pas un Design Pattern au sens strict, l'organisation du flux de contrôle via une classe `Menu` statique agit comme un contrôleur ou une façade pour l'application.
+
+**Pourquoi l'avoir utilisé ?**
+- **Séparation de l'UI et de la Logique :** La classe `Menu` gère toutes les interactions avec l'utilisateur (affichage, saisie) et orchestre les appels aux méthodes métier (combat, repos, inventaire).
+- **Centralisation du Flux :** Le fichier `App.java` reste très simple et sert uniquement de point d'entrée, déléguant immédiatement le contrôle à `Menu.start()`.
+- **Modularité :** Les différentes phases du jeu (création de personnage, boucle de jeu principale, gestion des combats) sont découpées en méthodes distinctes dans `Menu`, rendant le code lisible et maintenable.
+- **Gestion de l'Inventaire :** Le Menu intègre désormais des méthodes dédiées comme `gearEquip` pour changer d'équipement et `drinkPot` pour utiliser des consommables, séparant ces logiques de la boucle principale.
 
 
 
