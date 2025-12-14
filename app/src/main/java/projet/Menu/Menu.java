@@ -70,18 +70,20 @@ public class Menu {
                 inventory.remove(i);
                 i--;
             } else {
-                if (((Potion)actualItem).getNbOfUse() <= 0) {
+                if (((Potion) actualItem).getNbOfUse() <= 0) {
                     inventory.remove(i);
                     i--;
                 }
             }
-            System.err.println(i + " : " + inventory.get(i));
         }
         if (inventory.isEmpty()) {
             System.err.println("Inventaire vide, retour au menu");
             Thread.sleep(1000);
         } else {
             System.err.println("Voici ton inventaire, écrit le nombre de la potion que tu veux équiper :");
+            for (int i = 0; i < inventory.size(); i++) {
+                System.err.println(i + " : " + inventory.get(i));
+            }
             int choice = scanner.nextInt();
             if (choice > inventory.size() - 1 || choice < 0) {
                 System.err.println("La potion choisis existe pas !");
