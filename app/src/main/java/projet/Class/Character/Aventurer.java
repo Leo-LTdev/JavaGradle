@@ -99,10 +99,16 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
     }
 
     public void drinkPotion(Potion potion) {
-        setLife(getLife() + potion.getPower());
-        potion.reduceUse();
-        System.out.println("Vous vous soignez de : " + potion.getPower() + " PV");
+        if (getLife() + potion.getPower() > getmaxLife()) {
+            setLife(getmaxLife());
+            potion.reduceUse();
+            System.out.println("Vous vous soignez au maximum de votre vie !");
+        } else {
+            setLife(getLife() + potion.getPower());
+            potion.reduceUse();
+            System.out.println("Vous vous soignez de : " + potion.getPower() + " PV");
 
+        }
     }
 
     public void equipWeapon(Weapon weapon) {
