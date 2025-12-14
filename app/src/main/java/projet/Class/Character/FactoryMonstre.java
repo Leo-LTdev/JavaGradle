@@ -47,7 +47,7 @@ public class FactoryMonstre {
                 .attack(randomInt(15, 30))
                 .xpValue(randomInt(20, 35))
                 .level(randomInt(2, 5))
-                .resurractionRate(randomDouble(0.3, 0.7))
+                .resurractionRate(randomDouble(0.3, 0.5))
                 .build();
     }
 

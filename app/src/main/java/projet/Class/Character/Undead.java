@@ -3,9 +3,10 @@ package projet.Class.Character;
 public class Undead extends Monster {
 
     private double resurractionRate;
+    private boolean hasRevived = false;
 
     private Undead(int life, int speed, int armor, int attack, int xpValue, int level, double resurractionRate) {
-        super(life,speed,armor,attack,xpValue,level);
+        super(life, speed, armor, attack, xpValue, level);
         this.resurractionRate = resurractionRate;
     }
 
@@ -14,22 +15,21 @@ public class Undead extends Monster {
     }
 
     public boolean isDead() {
-        if (Math.random() < this.resurractionRate) {
-            resurrect();
-            return false;
-        } else {
-            return super.isDead();
+        if (super.isDead()) {
+            if (!hasRevived && Math.random() < this.resurractionRate) {
+                resurrect();
+                return false;
+            }
+            return true;
         }
+        return false;
     }
 
     private void resurrect() {
-        System.out.println("The undead is reviving, you need to kill him again !");
-        int curentLife = getLife();
-        int maxLife = getmaxLife();
-        curentLife = maxLife / 2;
-        setLife(curentLife);
+        hasRevived = true;
+        System.out.println("Le mort vivant est revenu d'entre les morts, vous devez le tuer une seconde fois !");
+        setLife(getmaxLife() / 2);
     }
-
 
     public static class UndeadBuilder {
 
