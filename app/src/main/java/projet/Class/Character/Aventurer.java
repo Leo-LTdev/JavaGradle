@@ -149,7 +149,12 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
 
     @Override
     public void seReposer() {
-        this.setLife(getLife() + 20);
-        System.out.println("Vous avez pu vous reposer et récupérer 20 points de vie !");
+        if (getLife() + 20 > getmaxLife()) {
+            this.setLife(getmaxLife());
+            System.out.println("Vous avez récupérer votre vie au maximum ! Vous pouvez partir au combat !");
+        } else {
+            this.setLife(getLife() + 20);
+            System.out.println("Vous avez pu vous reposer et récupérer 20 points de vie !");
+        }
     }
 }
