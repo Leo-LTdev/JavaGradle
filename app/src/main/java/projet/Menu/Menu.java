@@ -75,6 +75,7 @@ public class Menu {
                     i--;
                 } else {
                 System.err.println(i + " : " + inventory.get(i));
+                }
             }
         }
         if (inventory.isEmpty()) {
