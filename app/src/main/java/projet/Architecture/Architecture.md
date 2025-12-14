@@ -386,7 +386,15 @@ Cette section décrit comment les assistants IA ont été intégrés au flux de 
 *   *Adaptation :* Nous avons décidé de découper manuellement ce diagramme en plusieurs **Vues Thématiques** (Hiérarchie, Builders, Factories) pour en améliorer la lisibilité, tout en conservant la base syntaxique fournie par l'IA.
 
 ### Rédaction Technique
-**Usage :** Aide à la structuration et au formatage du document `Architecture.md`, assurant une présentation professionnelle du rapport.
+**Usage :** 
+*   Aide à la structuration et au formatage du document `Architecture.md`, assurant une présentation professionnelle du rapport.
+*   Rédaction du fichier `README.md` pour présenter le projet.
+
+### Équilibrage du Jeu (Game Design)
+**Usage :** Proposition de statistiques pour les personnages et les monstres.
+**Retour d'expérience :**
+*   L'IA a fourni une base cohérente pour les statistiques (PV, Attaque, Vitesse).
+*   *Ajustement manuel :* Les statistiques proposées pour le **Tyranide** étaient initialement trop élevées, rendant le jeu déséquilibré. Nous avons dû intervenir manuellement pour réduire sa puissance et garantir une expérience de jeu équitable.
 
 ## 3. Philosophie de Développement
 Bien que l'IA ait servi d'accélérateur pour la documentation, la majeure partie du **développement logique et de l'implémentation des Design Patterns** a été réalisée manuellement.

@@ -53,7 +53,7 @@ public class FactoryMonstre {
 
     public static Tyranide createTyranide() {
         return new Tyranide.TyranideBuilder()
-                .life(randomInt(120, 180))
+                .life(randomInt(80, 100))
                 .speed(randomInt(10, 15))
                 .armor(randomInt(12, 20))
                 .attack(randomInt(18, 25))

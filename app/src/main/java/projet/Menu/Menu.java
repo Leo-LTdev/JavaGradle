@@ -30,7 +30,7 @@ public class Menu {
         while (inGame && player != null && player.getLife() > 0) {
             System.out.println("1 : Voir ses stats");
             System.out.println("2 : Combattre");
-            System.out.println("3 : équiper un objet de l'inventaire");
+            System.out.println("3 : Equiper un objet de l'inventaire");
             System.out.println("4 : Boire une potion");
             System.out.println("5 : Se reposer");
 
@@ -80,13 +80,13 @@ public class Menu {
             System.err.println("Inventaire vide, retour au menu");
             Thread.sleep(1000);
         } else {
-            System.err.println("Voici ton inventaire, écrit le nombre de la potion que tu veux équiper :");
+            System.err.println("Voici ton inventaire, écrit le numéro de la potion que tu veux équiper :");
             for (int i = 0; i < inventory.size(); i++) {
                 System.err.println(i + " : " + inventory.get(i));
             }
             int choice = scanner.nextInt();
             if (choice > inventory.size() - 1 || choice < 0) {
-                System.err.println("La potion choisis existe pas !");
+                System.err.println("La potion choisie n'existe pas !");
             } else {
                 Object Item = inventory.get(choice);
                 player.drinkPotion((Potion) Item);
@@ -110,10 +110,10 @@ public class Menu {
             System.err.println("Inventaire vide, retour au menu");
             Thread.sleep(1000);
         } else {
-            System.err.println("Voici ton inventaire, écrit le nombre de l'équipement que tu veux équiper :");
+            System.err.println("Voici ton inventaire, écrit le numéro de l'équipement que tu veux équiper :");
             int choice = scanner.nextInt();
             if (choice > inventory.size() - 1 || choice < 0) {
-                System.err.println("L'équipement choisis n'existe pas !");
+                System.err.println("L'équipement choisi n'existe pas !");
             } else {
                 Object Item = inventory.get(choice);
                 if (Item instanceof Armor) {

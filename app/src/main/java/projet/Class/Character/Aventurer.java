@@ -77,7 +77,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         if (getExp() > 100) {
             setLevel(getLevel() + 1);
             setExp(0);
-            System.err.println("Vous êtes passé niveau " + getLevel());
+            System.err.println("Vous êtes passé au niveau " + getLevel());
         }
         System.err.println("Vous êtes à " + total + " EXP / 100 avant le niveau supérieur");
     }
@@ -93,8 +93,8 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         if (target.isDead()) {
             System.out.println("Vous avez tué le monstre en infligeant : " + totalDamage);
         } else {
-            System.out.println("Vous avez infligé " + totalDamage + " degat");
-            System.out.println("Il reste " + target.getLife() + " PV");
+            System.out.println("Vous avez infligé " + totalDamage + " dégâts au monstre.");
+            System.out.println("Il lui reste " + target.getLife() + " PV");
         }
     }
 
@@ -124,7 +124,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         int totalAtk = getAttack() + weapon.getPower();
         setAttack(totalAtk);
 
-        System.out.println("Vous equipez " + weapon.getName());
+        System.out.println("Vous équipez " + weapon.getName());
     }
 
     public void equipArmor(Armor armor) {
@@ -140,7 +140,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         int totalArmor = getArmor() + armor.getPower();
         setArmor(totalArmor);
 
-        System.out.println("Vous equipez " + armor.getName());
+        System.out.println("Vous équipez " + armor.getName());
     }
 
     public boolean escape() {
@@ -148,7 +148,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
             System.out.println("Vous avez réussi à fuir le combat !");
             return true;
         } else {
-            System.out.println("Échec de la fuite ! Vous allez affronter la réalité big noob !");
+            System.out.println("Échec de la fuite ! Vous allez affronter la réalité !");
             return false;
         }
     }
@@ -157,7 +157,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
     public void seReposer() {
         if (getLife() + 20 > getmaxLife()) {
             this.setLife(getmaxLife());
-            System.out.println("Vous avez récupérer votre vie au maximum ! Vous pouvez partir au combat !");
+            System.out.println("Vous avez récupéré votre vie au maximum ! Vous pouvez partir au combat !");
         } else {
             this.setLife(getLife() + 20);
             System.out.println("Vous avez pu vous reposer et récupérer 20 points de vie !");
