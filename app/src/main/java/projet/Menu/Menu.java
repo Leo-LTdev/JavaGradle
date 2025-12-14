@@ -32,6 +32,7 @@ public class Menu {
             System.out.println("2 : Combattre");
             System.out.println("3 : équiper un objet de l'inventaire");
             System.out.println("4 : Boire une potion");
+            System.out.println("5 : Se reposer");
 
             System.out.println("9 : Quitter la partie");
             int nombre = scanner.nextInt();
@@ -48,6 +49,9 @@ public class Menu {
             }
             if (nombre == 4) {
                 drinkPot(player, scanner);
+            }
+            if (nombre == 5) {
+                player.seReposer();
             }
             if (nombre == 9) {
                 /* Fin du jeu */
@@ -136,29 +140,34 @@ public class Menu {
         if (!monster.isDead()) {
             monster.dealDamage(player);
         } else if (monster.isDead()) { // Lorsque le monstre est mort
-            Drops(player);
+            Drops(player, monster);
         }
     }
 
-    public static void Drops(Aventurer player) {
+    public static void Drops(Aventurer player, Monster monster) {
         Random random = new Random();
         int randomNumber = random.nextInt(3);
+        player.gainExp(monster);
         switch (randomNumber) {
             case 0:
                 Object Armor = Monster.armorDrop(randomNumber, random);
                 player.setInventory(Armor);
+                System.err.println("Vous avez reçu : " + Armor);
                 break;
             case 1:
                 Object Weapon = Monster.weaponDrop(randomNumber, random);
                 player.setInventory(Weapon);
+                System.err.println("Vous avez reçu : " + Weapon);
                 break;
             case 2:
                 Object Potion = Monster.potionDrop(randomNumber, random);
                 player.setInventory(Potion);
+                System.err.println("Vous avez reçu : " + Potion);
                 break;
             default:
                 Object Default = Monster.armorDrop(randomNumber, random);
                 player.setInventory(Default);
+                System.err.println("Vous avez reçu : " + Default);
                 break;
         }
     }

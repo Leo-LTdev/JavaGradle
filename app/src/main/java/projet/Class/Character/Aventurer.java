@@ -66,7 +66,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         System.out.println("EXP : " + getExp());
     }
 
-    protected void gainExp(Monster monster) {
+    public void gainExp(Monster monster) {
         int total = getExp() + monster.getXpvalue();
         setExp(total);
     }
