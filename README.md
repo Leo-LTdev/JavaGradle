@@ -2,12 +2,11 @@
 
 > **Auteurs :**
 > 
->   * [Nom Prénom Etudiant 1]
->   * [Nom Prénom Etudiant 2]
->   * [Nom Prénom Etudiant 3]
+>   * [TOSCANO Léo B2 Informatique]
+>   * [BRAD Alexis B2 Cybersécurité]
+>   * [DUMAS Matthias B2 Informatique]
 > 
-> **Groupe :** [Votre Groupe de TD/TP]
-> **Date :** [Date de rendu]
+> **Date :** [Lundi 14 Décembre 2025 - 00H00 ]
 
 -----
 
