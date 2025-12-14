@@ -70,7 +70,7 @@ public class Menu {
                 inventory.remove(i);
                 i--;
             } else {
-                if (actualItem.getNbOfUse() <= 0) {
+                if ((Potion)(actualItem.getNbOfUse()) <= 0) {
                     inventory.remove(i);
                     i--;
                 } else {
