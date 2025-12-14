@@ -74,7 +74,7 @@ public class Menu {
                     inventory.remove(i);
                     i--;
                 } else {
-                System.err.println(i + " : " + inventory.get(i));
+                    System.err.println(i + " : " + inventory.get(i));
                 }
             }
         }
