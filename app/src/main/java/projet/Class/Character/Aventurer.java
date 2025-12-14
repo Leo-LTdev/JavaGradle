@@ -48,11 +48,15 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         return exp;
     }
 
+    //All set
     private void setExp(int exp) {
         this.exp = exp;
     }
 
-    //All set
+    private void setLevel(int level) {
+        this.level = level;
+    }
+
     public void setInventory(Object object) {
         inventory.add(object);
     }
@@ -64,11 +68,18 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         System.out.println("Vitesse : " + getSpeed());
         System.out.println("Attaque : " + getAttack());
         System.out.println("EXP : " + getExp());
+        System.out.println("Level : " + getLevel());
     }
 
     public void gainExp(Monster monster) {
         int total = getExp() + monster.getXpvalue();
         setExp(total);
+        if (getExp() > 100) {
+            setLevel(getLevel() + 1);
+            setExp(0);
+            System.err.println("Vous êtes passé niveau " + getLevel());
+        }
+        System.err.println("Vous avez gagné " + total + " EXP");
     }
 
     @Override
@@ -87,8 +98,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         }
     }
 
-
-    public void drinkPotion(Potion potion){
+    public void drinkPotion(Potion potion) {
         setLife(getLife() + potion.getPower());
         potion.reduceUse();
         System.out.println("Vous vous soignez de : " + potion.getPower() + " PV");
