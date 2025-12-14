@@ -29,37 +29,37 @@ public class FactoryMonstre {
 
     public static Orc createOrc() {
         return new Orc.OrcBuilder()
-                .life(randomInt(100, 150))
-                .speed(randomInt(20, 40))
-                .armor(randomInt(30, 50))
-                .attack(randomInt(40, 60))
-                .xpValue(randomInt(15, 30))
-                .level(randomInt(4, 7))
-                .height(randomDouble(2.0, 3.0))
+                .life(randomInt(30, 50))
+                .speed(randomInt(8, 12))
+                .armor(randomInt(5, 10))
+                .attack(randomInt(8, 15))
+                .xpValue(randomInt(15, 25))
+                .level(randomInt(1, 2))
+                .height(randomDouble(1.5, 2.2))
                 .build();
     }
 
     public static Undead createUndead() {
         return new Undead.UndeadBuilder()
                 .life(randomInt(50, 80))
-                .speed(randomInt(25, 45))
-                .armor(randomInt(10, 30))
-                .attack(randomInt(15, 30))
-                .xpValue(randomInt(20, 35))
-                .level(randomInt(2, 5))
-                .resurractionRate(randomDouble(0.3, 0.5))
+                .speed(randomInt(6, 10))
+                .armor(randomInt(8, 15))
+                .attack(randomInt(12, 20))
+                .xpValue(randomInt(25, 40))
+                .level(randomInt(2, 4))
+                .resurractionRate(randomDouble(0.1, 0.3))
                 .build();
     }
 
     public static Tyranide createTyranide() {
         return new Tyranide.TyranideBuilder()
-                .life(randomInt(20, 40))
-                .speed(randomInt(25, 40))
-                .armor(randomInt(5, 15))
-                .attack(randomInt(15, 30))
-                .xpValue(randomInt(15, 30))
-                .level(randomInt(1, 4))
-                .claws(randomInt(2, 4))
+                .life(randomInt(120, 180))
+                .speed(randomInt(10, 15))
+                .armor(randomInt(12, 20))
+                .attack(randomInt(18, 25))
+                .xpValue(randomInt(80, 120))
+                .level(randomInt(5, 7))
+                .claws(randomInt(3, 5))
                 .build();
     }
 }

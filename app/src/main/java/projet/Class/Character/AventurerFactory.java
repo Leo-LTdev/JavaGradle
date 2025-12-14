@@ -10,27 +10,27 @@ public class AventurerFactory {
             case 1:
                return factory.life(100)
                             .gear()
-                            .speed(25)
+                            .speed(15)
                             .armor(10)
-                            .attack(35)
+                            .attack(12)
                             .level()
                             .buildHuman();
             
             case 2:
                 return factory.life(80)
                                 .gear()
-                                .speed(40)
-                                .armor(10)
-                                .attack(40)
+                                .speed(20)
+                                .armor(5)
+                                .attack(15)
                                 .level()
                                 .buildEld();
             
             case 3:
-                return factory.life(5555)
+                return factory.life(120)
                             .gear()
-                            .speed(20)
-                            .armor(25)
-                            .attack(35)
+                            .speed(10)
+                            .armor(15)
+                            .attack(10)
                             .level()
                             .buildDwarf();
         

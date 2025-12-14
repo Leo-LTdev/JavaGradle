@@ -15,13 +15,13 @@ public class Orc extends Monster {
 
     public static class OrcBuilder {
 
-        private int life = 120;
-        private int speed = 30;
-        private int armor = 40;
-        private int attack = 50;
-        private int xpValue = 20;
-        private int level = 5;
-        private double height = 2.5;
+        private int life = 30;
+        private int speed = 8;
+        private int armor = 5;
+        private int attack = 8;
+        private int xpValue = 15;
+        private int level = 1;
+        private double height = 1.5;
 
         public OrcBuilder life(int life) {
             this.life = life;
