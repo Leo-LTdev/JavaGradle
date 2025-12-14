@@ -347,7 +347,27 @@ src
 
 ## 🛠️ Difficultés Rencontrées et Améliorations
 
+*   **Difficultés Rencontrées:**
+    *   La gestion de la création d'objets complexes avec de nombreux paramètres (par exemple, les statistiques des personnages) a été un défi. L'utilisation du patron de conception **Builder** a permis de simplifier ce processus et de le rendre plus lisible.
+    *   Le découplage de la logique de création des différents types de personnages et de monstres de la logique principale du jeu. Le patron de conception **Factory** a été utilisé pour encapsuler cette logique et faciliter l'ajout de nouveaux types de personnages ou de monstres.
+    *   Assurer une instance unique pour les builders afin d'optimiser l'utilisation des ressources. Le patron de conception **Singleton** a été mis en œuvre à cette fin.
+    *   L'équilibrage du jeu, en particulier avec des statistiques de monstres aléatoires, a nécessité plusieurs itérations pour trouver des plages de valeurs qui offrent un défi progressif sans être injustes.
+
+*   **Améliorations Possibles:**
+    *   Ajout d'une interface utilisateur graphique (GUI) pour une expérience de jeu plus immersive.
+    *   Complexification du système de combat avec l'ajout de compétences spéciales pour les personnages et les monstres.
+    *   Développement d'une histoire plus riche avec des quêtes, des dialogues et un monde plus vaste à explorer.
+    *   Sauvegarde et chargement de la progression du joueur.
 
 ## Méthodologie et Outils Utilisés
 
+*   **Méthodologie:**
+    *   Programmation Orientée Objet (POO)
+    *   Utilisation de patrons de conception (Design Patterns) pour une architecture robuste et flexible.
+    *   Développement itératif pour l'équilibrage et l'ajout de fonctionnalités.
+
+*   **Outils:**
+    *   **Langage :** Java
+    *   **Gestion de projet et de dépendances :** Gradle
+    *   **Gestion de version :** Git et GitHub
 ```
