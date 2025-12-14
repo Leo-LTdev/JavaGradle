@@ -75,18 +75,6 @@ public abstract class Character {
     }
     
     public abstract void dealDamage(Character target);
-        // int damage = this.getAttack() - damageReduction(target);
-        // if (damage < 0) {
-        //     damage = 0;
-        // }
-        // target.setLife(target.getLife() - damage);
-
-        // if (target.isDead()){
-        //     System.out.println("Vous avez tuer votre énemie en infligent : " + damage);
-        // } else {
-        //     System.out.println("Vous avez infligé " + damage + " degat");
-        //     System.out.println("Il reste " + target.getLife() + " PV");
-        // }
 
     public void takeDamage(int damage){
         this.setLife(getLife() - damage);

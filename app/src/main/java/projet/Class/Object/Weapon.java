@@ -1,8 +1,8 @@
 package projet.Class.Object;
 
-public class Weapon extends Object {
+public class Weapon extends Item {
 
-    public Weapon(){
+    public Weapon() {
     }
 
     public Weapon(ObjectBuilder builder) {

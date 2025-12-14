@@ -10,7 +10,7 @@ import projet.Menu.Menu;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         Aventurer player = Menu.initPlayer(scanner);
         boolean inGame = true;

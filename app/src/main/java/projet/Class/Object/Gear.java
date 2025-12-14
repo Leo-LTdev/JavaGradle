@@ -7,7 +7,7 @@ public class Gear {
 
     public Gear(){
         this.setWeapon(ObjectFactory.CreateSword(1));
-        this.setArmor(ObjectFactory.CreateAmor(1));
+        this.setArmor(ObjectFactory.CreateArmor(1));
     }
 
 
@@ -16,7 +16,7 @@ public class Gear {
         return weapon;
     }
 
-    public Armor getAmor(){
+    public Armor getArmor(){
         return armor;
     }
 

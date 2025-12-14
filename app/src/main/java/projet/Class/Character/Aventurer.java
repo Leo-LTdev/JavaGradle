@@ -53,7 +53,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
     }
 
     //All set
-    protected void setIventory(Object object) {
+    public void setInventory(Object object) {
         inventory.add(object);
     }
 
@@ -95,7 +95,7 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
 
     }
 
-    protected void equipWeapon(Weapon weapon) {
+    public void equipWeapon(Weapon weapon) {
 
         setAttack(getAttack() - getGear().getWeapon().getPower());
         getInventory().add(getGear().getWeapon());
@@ -111,18 +111,18 @@ public abstract class Aventurer extends Character implements Ideal_damage, IseRe
         System.out.println("Vous equipez " + weapon.getName());
     }
 
-    protected void equipArmor(Armor armor) {
+    public void equipArmor(Armor armor) {
 
-        setAttack(getArmor() - getGear().getAmor().getPower());
-        getInventory().add(getGear().getAmor());
+        setArmor(getArmor() - getGear().getArmor().getPower());
+        getInventory().add(getGear().getArmor());
 
         getGear().setArmor(armor);
 
         int index = this.getInventory().indexOf(armor);
         getInventory().remove(index);
 
-        int totalAtk = getArmor() + armor.getPower();
-        setAttack(totalAtk);
+        int totalArmor = getArmor() + armor.getPower();
+        setArmor(totalArmor);
 
         System.out.println("Vous equipez " + armor.getName());
     }

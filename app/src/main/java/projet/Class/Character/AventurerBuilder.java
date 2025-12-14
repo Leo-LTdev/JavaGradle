@@ -37,7 +37,7 @@ public class AventurerBuilder {
 
     public AventurerBuilder life(int value) {this.life = value; this.maxLife = value; return this;}
     public AventurerBuilder speed(int value) {this.speed = value; return this;}
-    public AventurerBuilder armor(int value) {this.armor = value + this.gear.getAmor().getPower(); return this;}
+    public AventurerBuilder armor(int value) {this.armor = value + this.gear.getArmor().getPower(); return this;}
     public AventurerBuilder attack(int value) {this.attack = value + this.gear.getWeapon().getPower(); return this;}
     public AventurerBuilder level(){this.level = 1; return this;}
     public AventurerBuilder gear(){this.gear = new Gear(); return this;}

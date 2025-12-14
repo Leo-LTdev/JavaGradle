@@ -26,7 +26,7 @@ public class AventurerFactory {
                                 .buildEld();
             
             case 3:
-                return factory.life(120)
+                return factory.life(5555)
                             .gear()
                             .speed(20)
                             .armor(25)

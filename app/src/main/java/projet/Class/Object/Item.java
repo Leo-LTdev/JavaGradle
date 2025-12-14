@@ -1,13 +1,13 @@
 package projet.Class.Object;
 
-public abstract class Object {
+public abstract class Item {
     private String name;
     private int power;
 
 
-    public Object(){};
+    public Item(){};
 
-    public Object(String name,int power){
+    public Item(String name,int power){
         this.name = name;
         this.power = power;
     }
@@ -18,4 +18,8 @@ public abstract class Object {
     protected void setName(String name){this.name = name;}
     protected void setPower(int power){this.power = power;}
     
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
