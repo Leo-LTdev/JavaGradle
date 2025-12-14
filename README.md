@@ -1,93 +1,91 @@
-# JavaGradle - A Console-Based RPG Adventure
+# Projet Fil Rouge : RPG en Console
 
-This project is a classic text-based RPG (Role-Playing Game) built in Java and managed with Gradle. Players create a character, battle monsters, gain experience, and collect loot in a fantasy setting.
+> **Auteurs :**
+> 
+>   * [Nom Prénom Etudiant 1]
+>   * [Nom Prénom Etudiant 2]
+>   * [Nom Prénom Etudiant 3]
+> 
+> **Groupe :** [Votre Groupe de TD/TP]
+> **Date :** [Date de rendu]
 
-## Project Overview
+-----
 
-The game is a console application that immerses the player in a simple yet engaging RPG world. You start by choosing your character's race, which determines your initial stats. From there, you navigate through a menu to engage in turn-based combat with various monsters, manage your inventory, and grow your character's power.
+## 📝 Description du Projet
 
-### Gameplay Features
+Ce projet est un RPG (Role-Playing Game) classique en mode texte. Les joueurs créent un personnage, combattent des monstres, gagnent de l'expérience et collectent du butin dans un univers fantastique.
 
--   **Character Creation**: Choose from classic fantasy races: Human, Elf, or Dwarf.
--   **Turn-Based Combat**: Engage in strategic fights against a variety of monsters.
--   **Random Encounters**: Face different enemies like Orcs, Undead, and Tyranides, each with unique stats.
--   **Experience & Leveling**: Defeat monsters to gain experience points and level up your character.
--   **Loot System**: Monsters drop valuable items upon defeat, including weapons, armor, and potions.
--   **Inventory Management**: Equip the best gear and use potions strategically to survive.
--   **Resting**: Recover health between fights to prepare for the next encounter.
+-----
 
-## Technical Architecture & Design Patterns
+## 🏗️ Architecture et Conception (POOA)
 
-This project was designed with a strong emphasis on clean code, scalability, and software design principles. The architecture leverages several key design patterns to ensure a decoupled and maintainable codebase.
+Cette section détaille les choix techniques qui justifient l'aspect "Avancé" de la programmation.
 
-### Core Class Hierarchy
+### 1. Architecture Globale
 
-The entity system is built upon a clear inheritance structure:
+Le projet est conçu avec un fort accent sur un code propre, la scalabilité et les principes de conception de logiciels. L'architecture s'appuie sur plusieurs patrons de conception clés pour garantir un code découplé et maintenable.
 
--   `Character` (Abstract Class): Provides the base attributes and functionalities for all living entities in the game (e.g., `life`, `attack`, `dealDamage()`).
--   `Aventurer`: Represents the player's character, inheriting from `Character` and adding features like an `inventory`, `gear`, and an experience system.
--   `Monster`: Represents the enemies, also inheriting from `Character` and adding monster-specific attributes like the experience value they provide upon defeat.
+### 2. Design Patterns utilisés
 
-### Implemented Design Patterns
+Voici les patrons de conception mis en œuvre pour répondre aux exigences de flexibilité :
+* **Builder**
+* **Factory**
+* **Singleton**
+* **Interfaces pour le comportement (similaire à Strategy)**
 
-As detailed in the `Architecture.md` file, the project makes extensive use of the following patterns:
+-----
 
-1.  **Builder Pattern**: Used for the construction of complex objects like `Aventurer` and `Monster`. This pattern provides a clear and readable API for setting an object's attributes (e.g., `.life(100).speed(25).build()`), avoiding constructors with long parameter lists.
+## ✨ Fonctionnalités
 
-2.  **Factory Pattern**: Encapsulates the object creation logic.
-    -   `AventurerFactory`: Simplifies the creation of the player's character based on their race selection.
-    -   `FactoryMonstre`: Handles the instantiation of random monsters for combat encounters, abstracting away the details of their statistical generation.
+  - [x] Création de personnage (Humain, Elfe, Nain).
+  - [x] Combat au tour par tour.
+  - [x] Rencontres aléatoires avec des monstres.
+  - [x] Système d'expérience et de montée de niveau.
+  - [x] Système de butin (loot).
+  - [x] Gestion de l'inventaire.
 
-3.  **Singleton Pattern**: Applied to the Builder classes (`AventurerBuilder`, `ObjectBuilder`) to ensure a single, globally accessible instance is used for constructing objects, optimizing resource usage.
+-----
 
-4.  **Interfaces for Behavior (Strategy-like)**:
-    -   `Ideal_damage`: Defines a contract for any character that can deal damage, ensuring polymorphic behavior in the combat system.
-    -   `IseReposer`: A specific interface implemented only by `Aventurer`, segregating abilities that are exclusive to the player.
+## 🚀 Installation et Lancement
 
-## How to Play
+Ce projet utilise **Gradle** pour la gestion des dépendances et la compilation.
 
-Once the application is running, you will be guided by on-screen prompts:
+### Prérequis
 
-1.  First, you'll be asked to **choose a race** for your adventurer.
-2.  You will then be presented with the **main menu**, where you can:
-    -   View your character's stats.
-    -   Initiate combat with a random monster.
-    -   Manage your inventory by equipping items or drinking potions.
-    -   Rest to recover health.
-    -   Quit the game.
-3.  Combat is turn-based. On your turn, you can choose to attack, use a potion, or attempt to flee.
+  * JDK 8 ou supérieur.
+  * Git.
 
-## Installation
-
-### Prerequisites
-
--   Java Development Kit (JDK) 8 or higher.
-
-### Manual Installation with Gradle Wrapper
-
-To install and run the project, you can use the provided Gradle Wrapper (`gradlew`).
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository-url>
-    cd JavaGradle
-    ```
-
-2.  **Run the application using the Gradle Wrapper:**
-    The `gradlew` script will automatically download the correct Gradle version.
-
-    For Windows:
-    ```bash
-    gradlew.bat run
-    ```
-
-    For macOS/Linux:
-    ```bash
-    ./gradlew run
-    ```
-3. **Here are the manual installation steps :**
-    If the other steps didn't work, just create gradlew and put this code in, it should work
+### Cloner le projet
+```bash
+git clone <repository-url>
+cd JavaGradle
 ```
+
+### Lancer le Projet (Console / GUI)
+Pour lancer l'application, vous pouvez utiliser le Gradle Wrapper fourni (`gradlew`).
+
+Pour Windows:
+```bash
+gradlew.bat run
+```
+
+Pour macOS/Linux:
+```bash
+./gradlew run
+```
+
+### Lancer les tests unitaires
+```bash
+# On Windows
+./gradlew.bat test
+
+# On macOS/Linux
+./gradlew test
+```
+
+### Manual Installation
+Si les autres étapes n'ont pas fonctionné, créez simplement `gradlew` et mettez-y ce code, ça devrait fonctionner :
+```shell
 #!/bin/sh
 
 #
@@ -140,7 +138,7 @@ To install and run the project, you can use the provided Gradle Wrapper (`gradle
 #       options in "$@", and eventually passing that to Java.
 #
 #       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
-#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly; 
 #       see the in-line comments for details.
 #
 #       There are tweaks for specific operating systems such as AIX, CygWin,
@@ -167,7 +165,7 @@ do
     ls=$( ls -ld "$app_path" )
     link=${ls#*' -> '}
     case $link in             #(
-      /*)   app_path=$link ;; #(
+      /*)   app_path=$link ;; #( 
       *)    app_path=$APP_HOME$link ;;
     esac
 done
@@ -182,7 +180,7 @@ APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s\n' "$PWD" ) || exi
 MAX_FD=maximum
 
 warn () {
-    echo "$*"
+    echo "$*" 
 } >&2
 
 die () {
@@ -198,13 +196,13 @@ msys=false
 darwin=false
 nonstop=false
 case "$( uname )" in                #(
-  CYGWIN* )         cygwin=true  ;; #(
-  Darwin* )         darwin=true  ;; #(
-  MSYS* | MINGW* )  msys=true    ;; #(
-  NONSTOP* )        nonstop=true ;;
+  CYGWIN* )         cygwin=true  ;; #( 
+  Darwin* )         darwin=true  ;; #( 
+  MSYS* | MINGW* )  msys=true    ;; #( 
+  NONSTOP* )        nonstop=true ;; 
 esac
 
-CLASSPATH="\\\"\\\""
+CLASSPATH="\\\\"\"\""
 
 
 # Determine the Java command to use to start the JVM.
@@ -216,34 +214,28 @@ if [ -n "$JAVA_HOME" ] ; then
         JAVACMD=$JAVA_HOME/bin/java
     fi
     if [ ! -x "$JAVACMD" ] ; then
-        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
-
-Please set the JAVA_HOME variable in your environment to match the
-location of your Java installation."
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME\n\nPlease set the JAVA_HOME variable in your environment to match the\nlocation of your Java installation."
     fi
 else
     JAVACMD=java
     if ! command -v java >/dev/null 2>&1
     then
-        die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
-
-Please set the JAVA_HOME variable in your environment to match the
-location of your Java installation."
+        die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.\n\nPlease set the JAVA_HOME variable in your environment to match the\nlocation of your Java installation."
     fi
 fi
 
 # Increase the maximum file descriptors if we can.
 if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
-    case $MAX_FD in #(
-      max*)
+    case $MAX_FD in #( 
+      max*) 
         # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
         # shellcheck disable=SC2039,SC3045
         MAX_FD=$( ulimit -H -n ) ||
             warn "Could not query maximum file descriptor limit"
     esac
-    case $MAX_FD in  #(
-      '' | soft) :;; #(
-      *)
+    case $MAX_FD in  #( 
+      '' | soft) :;; #( 
+      *) 
         # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
         # shellcheck disable=SC2039,SC3045
         ulimit -n "$MAX_FD" ||
@@ -268,11 +260,12 @@ if "$cygwin" || "$msys" ; then
 
     # Now convert the arguments - kludge to limit ourselves to /bin/sh
     for arg do
-        if
-            case $arg in                                #(
-              -*)   false ;;                            # don't mess with options #(
-              /?*)  t=${arg#/} t=/${t%%/*}              # looks like a POSIX filepath
-                    [ -e "$t" ] ;;                      #(
+        if 
+            case $arg in                                #( 
+              -*)   false ;;                            # don't mess with options #( 
+              /?*)  t=${arg#/}
+                    t=/${t%%/*}
+                    [ -e "$t" ] ;;                      #( 
               *)    false ;;
             esac
         then
@@ -331,7 +324,7 @@ fi
 # an unmatched quote.
 #
 
-eval "set -- $(
+eval "set -- $( 
         printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
         xargs -n1 |
         sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
@@ -341,28 +334,21 @@ eval "set -- $(
 exec "$JAVACMD" "$@"
 ```
 
-## Usage
+-----
 
-To run the application:
+## 📂 Structure du Projet
 
-```bash
-# On Windows
-./gradlew.bat run
-
-# On macOS/Linux
-./gradlew run
+```
+src
+├── main
+...
 ```
 
-## Building
+-----
 
-To build the project and create an executable JAR file:
+## 🛠️ Difficultés Rencontrées et Améliorations
 
-```bash
-# On Windows
-./gradlew.bat build
 
-# On macOS/Linux
-./gradlew build
+## Méthodologie et Outils Utilisés
+
 ```
-
-The distributable files, including the JAR, will be located in the `app/build/distributions` directory.
