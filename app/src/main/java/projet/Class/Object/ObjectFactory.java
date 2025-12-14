@@ -10,17 +10,17 @@ public class ObjectFactory {
         switch (choice) {
             case 0:
                return factory.name("Wooden Sword")
-                            .power(5)
+                            .power(10)
                             .buildWeapon();
             
             case 1:
                 return factory.name("Iron Sword")
-                            .power(10)
+                            .power(20)
                             .buildWeapon();
             
             case 2:
                 return factory.name("Diamond Sword")
-                            .power(15)
+                            .power(30)
                             .buildWeapon();
         
             default:
@@ -36,17 +36,17 @@ public class ObjectFactory {
         switch (choice) {
             case 0:
                return factory.name("Cloth Armor")
-                            .power(5)
+                            .power(10)
                             .buildArmor();
             
             case 1:
                 return factory.name("Leather Armor")
-                            .power(10)
+                            .power(20)
                             .buildArmor();
             
             case 2:
                 return factory.name("Iron Armor")
-                            .power(15)
+                            .power(30)
                             .buildArmor();
         
             default:
@@ -62,20 +62,20 @@ public class ObjectFactory {
         switch (choice) {
             case 0:
                return factory.name("Ligth Potion")
-                            .power(35)
-                            .nbOfUse(2)
+                            .power(30)
+                            .nbOfUse(3)
                             .buildPotion();
             
             case 1:
                 return factory.name("Normal Potion")
-                            .power(55)
-                            .nbOfUse(1)
+                            .power(60)
+                            .nbOfUse(2)
                             .buildPotion();
             
             case 2:
                 return factory.name("Heavy Potion")
-                            .power(80)
-                            .nbOfUse(2)
+                            .power(100)
+                            .nbOfUse(1)
                             .buildPotion();
         
             default:
