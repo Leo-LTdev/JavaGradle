@@ -79,7 +79,7 @@ public class Menu {
         } else {
             System.err.println("Voici ton inventaire, écrit le nombre de la potion que tu veux équiper :");
             int choice = scanner.nextInt();
-            if (choice > inventory.size() - 1) {
+            if (choice > inventory.size() - 1 || choice < 0) {
                 System.err.println("La potion choisis existe pas !");
             } else {
                 Object Item = inventory.get(choice);
@@ -106,7 +106,7 @@ public class Menu {
         } else {
             System.err.println("Voici ton inventaire, écrit le nombre de l'équipement que tu veux équiper :");
             int choice = scanner.nextInt();
-            if (choice > inventory.size() - 1) {
+            if (choice > inventory.size() - 1 || choice < 0) {
                 System.err.println("L'équipement choisis n'existe pas !");
             } else {
                 Object Item = inventory.get(choice);
