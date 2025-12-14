@@ -108,7 +108,7 @@ public class Menu {
         }
     }
 
-    public static void fight(Aventurer player, Scanner scanner) {
+    public static void fight(Aventurer player, Scanner scanner) throws InterruptedException {
         Monster monster = randomMonster();
         System.out.println(infightMonster(monster));
         /* Print de l'ennemi */
@@ -116,14 +116,14 @@ public class Menu {
         int nombre;
         while (!player.isDead() && !monster.isDead() && escape) {
             System.out.println("1 : Attaquer");
-            System.out.println("2 : Utiliser un objet");
+            System.out.println("2 : Boire une potion");
             System.out.println("3 : Fuir");
             nombre = scanner.nextInt();
             if (nombre == 1) {
                 damageOption(player, monster);
             }
             if (nombre == 2) {
-
+                drinkPot(player, scanner);
             }
             if (nombre == 3) {
                 escape = tryEscape(escape, player, monster);
